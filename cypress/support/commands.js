@@ -10,7 +10,27 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+
+/// Creating Custom Command 'SelectProduct'
+
+Cypress.Commands.add('SelectProduct', (ProductName) => { 
+
+
+    cy.get('h4.card-title').each(($el, index, $list)=>{ //iterate each card to search and match the product name
+
+        if($el.text().includes(ProductName)) //matching the product name
+            
+        {
+            cy.get('button.btn.btn-info').eq(index).click() //clicking the add to cart button
+    
+        }
+    
+    })
+
+  })
+
+
+
 //
 //
 // -- This is a child command --
