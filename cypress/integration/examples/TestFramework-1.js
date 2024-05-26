@@ -1,5 +1,8 @@
 /// <reference types="Cypress" />
 
+import HomePage from "./PageObjects/HomePage"
+import ProductPage from "./PageObjects/ProductPage"
+
 describe("Framework-1 test suite", function(){
 
     beforeEach(() => {
@@ -15,24 +18,27 @@ describe("Framework-1 test suite", function(){
 
     it("Framework-1 test case:", function(){
 
+        const homePage = new HomePage()
+        const productPage = new ProductPage()
+
         cy.visit("https://rahulshettyacademy.com/angularpractice/")
 
-        cy.get("input[name='name']:nth-child(2)").type(this.data.name) //putting the name in the first text box
+        homePage.getEditBox().type(this.data.name) //putting the name in the first text box
 
-        cy.get('select').select(this.data.gender) //selecting the gender from the dropdown list
+        homePage.getGender().select(this.data.gender) //selecting the gender from the dropdown list
 
         ///Assertions
 
-        cy.get(':nth-child(4) > .ng-pristine').should('have.value',this.data.name )// Checking the name is same or not in the two text boxes
+        homePage.getTwoWayDataBinding().should('have.value',this.data.name )// Checking the name is same or not in the two text boxes
 
-        cy.get("input[name='name']:nth-child(2)").should('have.attr', 'minlength', '2') // Checking whether the required minimum character length is 2 or not
+        homePage.getEditBox().should('have.attr', 'minlength', '2') // Checking whether the required minimum character length is 2 or not
 
-        cy.get('#inlineRadio3').should('be.disabled') // Checking the radio button is disabled or not
+        homePage.getEntrepreneaur().should('be.disabled') // Checking the radio button is disabled or not
 
 
         //cy.pause()
 
-        cy.get(':nth-child(2) > .nav-link').click() //navigating to product list by clicking 'Shop' button
+        homePage.getShopTab().click() //navigating to product list by clicking 'Shop' button
 
         
         this.data.productName.forEach(function(element) //iterating each phone from the array/list
@@ -42,6 +48,7 @@ describe("Framework-1 test suite", function(){
 
         })
         
+        productPage.checkOut().click()
         
 
     })
