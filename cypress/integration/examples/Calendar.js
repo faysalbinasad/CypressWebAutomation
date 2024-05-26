@@ -21,7 +21,7 @@ describe("Calendar test suite", function(){
 
         cy.contains("button", Date ).click() // Select the date (15)
 
-        /// Assertions
+        // Assertions
 
         
 
