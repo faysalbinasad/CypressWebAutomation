@@ -1,3 +1,4 @@
+/// <reference types="Cypress" />
 
 describe("Calendar test suite", function(){
 
@@ -6,6 +7,7 @@ describe("Calendar test suite", function(){
         const MonthNumber = "6";
         const Date = "15";
         const Year = "2027";
+        const expectedList = [MonthNumber,Date,Year];
     
         cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/offers")
 
@@ -21,9 +23,15 @@ describe("Calendar test suite", function(){
 
         cy.contains("button", Date ).click() // Select the date (15)
 
-        // Assertions
+        /// Assertions
 
+        cy.get(".react-date-picker__inputGroup__input").each(($el,index)=>
         
+        {
+
+            cy.wrap($el).invoke('val').should('eq',expectedList[index]) // (6/15/2027)
+
+        })
 
     })
 })
