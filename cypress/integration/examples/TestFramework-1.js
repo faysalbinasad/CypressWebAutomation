@@ -30,9 +30,19 @@ describe("Framework-1 test suite", function(){
         cy.get('#inlineRadio3').should('be.disabled') // Checking the radio button is disabled or not
 
 
+        //cy.pause()
+
         cy.get(':nth-child(2) > .nav-link').click() //navigating to product list by clicking 'Shop' button
 
-        cy.SelectProduct('iphone X')
+        
+        this.data.productName.forEach(function(element) //iterating each phone from the array/list
+        
+        {
+            cy.SelectProduct(element) //calling the custom method SelectProduct everytime
+
+        })
+        
+        
 
     })
 })

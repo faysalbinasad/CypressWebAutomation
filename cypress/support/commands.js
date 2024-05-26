@@ -13,12 +13,12 @@
 
 /// Creating Custom Command 'SelectProduct'
 
-Cypress.Commands.add('SelectProduct', (ProductName) => { 
+Cypress.Commands.add('SelectProduct', (element) => { 
 
 
     cy.get('h4.card-title').each(($el, index, $list)=>{ //iterate each card to search and match the product name
 
-        if($el.text().includes(ProductName)) //matching the product name
+        if($el.text().includes(element)) //matching the product name
             
         {
             cy.get('button.btn.btn-info').eq(index).click() //clicking the add to cart button
