@@ -8,8 +8,8 @@ describe("Calendar test suite", function(){
         const Date = "15";
         const Year = "2027";
         const expectedList = [MonthNumber,Date,Year];
-    
-        cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/offers")
+
+        cy.visit(Cypress.env('BaseUrl') + "/seleniumPractise/#/offers")
 
         cy.get (".react-date-picker__inputGroup").click() //click on the calendar modal
 

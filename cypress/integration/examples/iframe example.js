@@ -6,7 +6,7 @@ describe("My iframe test suite", function(){
 
     it("My iframe test case:", function(){
     
-        cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
+        cy.visit(Cypress.env('BaseUrl') + "/AutomationPractice/")
         
         cy.frameLoaded('#courses-iframe')
 

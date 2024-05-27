@@ -6,7 +6,8 @@ describe("My second test suite", () => {
    
         /// Clicking child Tab [1) Browse one URL 2) Then Go to a Child Tab 3) Then clcik one module]
 
-cy.visit("https://rahulshettyacademy.com/AutomationPractice/");
+cy.visit(Cypress.env('BaseUrl') + "/AutomationPractice/");
+
 cy.get('#opentab').invoke('removeAttr', 'target').click();
 cy.origin("https://www.qaclickacademy.com/", () => {
 

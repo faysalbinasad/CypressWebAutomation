@@ -4,7 +4,7 @@ describe("My fourth test suite", function(){
 
     it("My fourth test case: Proceed to Checkout", function(){
     
-    cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
+        cy.visit(Cypress.env('BaseUrl') + "/AutomationPractice/")
 
         cy.get("div.mouse-hover-content").invoke('show')
         //cy.contains('Top').click({ force: true })

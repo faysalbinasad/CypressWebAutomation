@@ -23,7 +23,7 @@ describe("Framework-1 test suite", function(){
         const homePage = new HomePage()
         const productPage = new ProductPage()
 
-        cy.visit("https://rahulshettyacademy.com/angularpractice/")
+        cy.visit(Cypress.env('BaseUrl') + "/angularpractice/")
 
         homePage.getEditBox().type(this.data.name) //putting the name in the first text box
 
@@ -53,13 +53,53 @@ describe("Framework-1 test suite", function(){
         
         productPage.checkOut().click() // clicking on the checkout button [Top Right]
 
+
+        ///Subototal/Total off all prices -Starts
+        var subTotal = 0
+        cy.get('tr td:nth-child(4) strong').each(($el, index, $list) => {
+
+            const totalPrice = $el.text()
+            var result = totalPrice.split(" ")
+            result = result[1].trim()
+            subTotal = Number(subTotal) + Number(result)   
+
+        }).then(function()
+        {
+            cy.log(subTotal)
+
+        })
+        ///Subototal/Total off all prices -Ends
+
+        cy.get('h3 strong').each((element, index, $list) => {
+
+            const actualTotal = element.text()
+            var result1 = actualTotal.split(" ")
+            var displayedTotal = result1[1].trim()
+            expect(Number(displayedTotal)).to.equal(subTotal)
+
+        })
+
+
+
         cy.contains("Checkout").click() // clicking on the checkout button [To proceed checkout]
         
-        cy.get("#country").type('Bangladesh') //Typing the country name (Bangladesh)
+        cy.get("#country").type('India') //Typing the country name (Bangladesh)
 
-        cy.get('.suggestions > ul > li > a', { timeout: 10000 }).should('be.visible').click() // Wait for and click the searched country (Bangladesh)
+        cy.get('.suggestions > ul > li > a').should('be.visible').click() //click the searched country (Bangladesh)
         
-        //cy.get('#checkbox2').click() // Clicking on the checkbox
+        cy.get('#checkbox2').click({force: true}) // Clicking on the checkbox
+
+        cy.get("input[type='submit']").click() //clicking on purchase button
+
+        ///Assertions
+
+        cy.get('.alert').then(function(element)
+        {
+            const actualText = element.text()
+
+        expect(actualText.includes("Success")).to.be.true
+
+        })
     })
 })
 
