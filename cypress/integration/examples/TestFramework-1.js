@@ -18,6 +18,8 @@ describe("Framework-1 test suite", function(){
 
     it("Framework-1 test case:", function(){
 
+        Cypress.config('defaultCommandTimeout', 8000) // defining wait time only for this test case
+
         const homePage = new HomePage()
         const productPage = new ProductPage()
 
@@ -40,7 +42,8 @@ describe("Framework-1 test suite", function(){
 
         homePage.getShopTab().click() //navigating to product list by clicking 'Shop' button
 
-        
+        Cypress.config('defaultCommandTimeout', 8000) // defining wait time only for this test case
+
         this.data.productName.forEach(function(element) //iterating each phone from the array/list
         
         {
@@ -48,9 +51,15 @@ describe("Framework-1 test suite", function(){
 
         })
         
-        productPage.checkOut().click()
-        
+        productPage.checkOut().click() // clicking on the checkout button [Top Right]
 
+        cy.contains("Checkout").click() // clicking on the checkout button [To proceed checkout]
+        
+        cy.get("#country").type('Bangladesh') //Typing the country name (Bangladesh)
+
+        cy.get('.suggestions > ul > li > a').click() //selecting the searched country (Bangladesh)
+
+        cy.get('#checkbox2').click() // Clicking on the checkbox
     })
 })
 
