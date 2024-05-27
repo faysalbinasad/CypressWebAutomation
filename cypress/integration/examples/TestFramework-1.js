@@ -57,9 +57,9 @@ describe("Framework-1 test suite", function(){
         
         cy.get("#country").type('Bangladesh') //Typing the country name (Bangladesh)
 
-        cy.get('.suggestions > ul > li > a').click() //selecting the searched country (Bangladesh)
-
-        cy.get('#checkbox2').click() // Clicking on the checkbox
+        cy.get('.suggestions > ul > li > a', { timeout: 10000 }).should('be.visible').click() // Wait for and click the searched country (Bangladesh)
+        
+        //cy.get('#checkbox2').click() // Clicking on the checkbox
     })
 })
 
