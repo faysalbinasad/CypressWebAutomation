@@ -19,6 +19,7 @@
     "cypress-mochawesome-reporter": "^3.8.2"
   },
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.0.5"
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
+    "@cypress/browserify-preprocessor": "latest"
   }
 }
