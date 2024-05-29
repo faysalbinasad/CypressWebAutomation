@@ -23,7 +23,8 @@ module.exports = defineConfig({
       // implement node event listeners here
       require('cypress-mochawesome-reporter/plugin')(on);
     },
-     specPattern: 'cypress\\integration\\examples\\*.js'
+     //specPattern: 'cypress\\integration\\examples\\*.js'
+       specPattern: 'cypress/integration/examples/**/*.js',
   },
 
 
