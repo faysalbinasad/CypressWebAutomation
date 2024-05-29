@@ -97,7 +97,7 @@ describe("Framework-1 test suite", function(){
         {
             const actualText = element.text()
 
-        expect(actualText.includes("Successed")).to.be.true
+        expect(actualText.includes("Success")).to.be.true
 
         })
     })
