@@ -2,12 +2,13 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import ProductPage from "../../PageObjects/ProductPage";
 import HomePage from "../../PageObjects/HomePage";
 
+let name
 const homePage = new HomePage();
 const productPage = new ProductPage();
 
 
 // Given I open Ecommerce Page
-Given('I open Ecommerce Page', () => {
+Given('I open Ecommerce Page', function() {
     cy.visit(Cypress.env('BaseUrl') + "/angularpractice/");
 });
 
@@ -58,14 +59,17 @@ Then('select the country,submit and verify Thankyou', () => {
 });
 
 // When I fill the form details
-When('I fill the form details', function () {
-    homePage.getEditBox().type(this.data.name); // putting the name in the first text box
-    homePage.getGender().select(this.data.gender); // selecting the gender from the dropdown list
+When('I fill the form details', function (dataTable) {
+
+    // [Henna , Female]
+    name = dataTable.rawTable[1][0]
+    homePage.getEditBox().type(dataTable.rawTable[1][0]); // putting the name in the first text box
+    homePage.getGender().select(dataTable.rawTable[1][1]); // selecting the gender from the dropdown list
 });
 
 // Then validate the form's behaviour
 Then('validate the forms behaviour', function () {
-    homePage.getTwoWayDataBinding().should('have.value', this.data.name); // Checking the name is same or not in the two text boxes
+    homePage.getTwoWayDataBinding().should('have.value', name); // Checking the name is same or not in the two text boxes
     homePage.getEditBox().should('have.attr', 'minlength', '2'); // Checking whether the required minimum character length is 2 or not
     homePage.getEntrepreneaur().should('be.disabled'); // Checking the radio button is disabled or not
     Cypress.config('defaultCommandTimeout', 8000); // defining wait time only for this test case
