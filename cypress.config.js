@@ -42,7 +42,7 @@ module.exports = defineConfig({
       setupNodeEvents,
      //specPattern: 'cypress\\integration\\examples\\*.js'
 
-       specPattern: 'cypress/integration/examples/**/*.js',
+       //specPattern: 'cypress/integration/examples/**/*.js',
 
        specPattern: 'cypress/integration/examples/BDD/**/*.feature'
   },

@@ -37,12 +37,11 @@ describe("Framework-1 test suite", function(){
 
         homePage.getEntrepreneaur().should('be.disabled') // Checking the radio button is disabled or not
 
+        Cypress.config('defaultCommandTimeout', 8000) // defining wait time only for this test case
 
         //cy.pause()
 
         homePage.getShopTab().click() //navigating to product list by clicking 'Shop' button
-
-        Cypress.config('defaultCommandTimeout', 8000) // defining wait time only for this test case
 
         this.data.productName.forEach(function(element) //iterating each phone from the array/list
         
