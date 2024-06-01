@@ -19,7 +19,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 663000000
+              "duration": 1398000000
             }
           },
           {
@@ -32,12 +32,12 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2529000000
+              "duration": 1815000000
             }
           },
           {
             "arguments": [],
-            "keyword": "Then ",
+            "keyword": "When ",
             "line": 9,
             "name": "validate the total price",
             "match": {
@@ -45,7 +45,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 41000000
+              "duration": 44000000
             }
           },
           {
@@ -58,7 +58,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5588000000
+              "duration": 5737000000
             }
           }
         ],
@@ -117,12 +117,12 @@
             },
             "result": {
               "status": "passed",
-              "duration": 393000000
+              "duration": 375000000
             }
           },
           {
             "arguments": [],
-            "keyword": "Then ",
+            "keyword": "When ",
             "line": 18,
             "name": "validate the forms behaviour",
             "match": {
@@ -130,7 +130,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 35000000
+              "duration": 30000000
             }
           },
           {
@@ -143,7 +143,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 209000000
+              "duration": 226000000
             }
           }
         ],

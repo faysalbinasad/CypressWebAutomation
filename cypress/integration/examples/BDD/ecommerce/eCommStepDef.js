@@ -1,6 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import ProductPage from "../../PageObjects/ProductPage";
-import HomePage from "../../PageObjects/HomePage";
+import ProductPage from "../../../../support/PageObjects/ProductPage";
+import HomePage from "../../../../support/PageObjects/HomePage";
 
 let name
 const homePage = new HomePage();
@@ -23,8 +23,8 @@ When('I add items to cart', function () {
     productPage.checkOut().click(); // clicking on the checkout button [Top Right]
 });
 
-// Then validate the total price
-Then('validate the total price', () => {
+// When validate the total price
+When('validate the total price', () => {
     let subTotal = 0;
     cy.get('tr td:nth-child(4) strong').each(($el, index, $list) => {
         const totalPrice = $el.text();
@@ -67,8 +67,8 @@ When('I fill the form details', function (dataTable) {
     homePage.getGender().select(dataTable.rawTable[1][1]); // selecting the gender from the dropdown list
 });
 
-// Then validate the form's behaviour
-Then('validate the forms behaviour', function () {
+// When validate the form's behaviour
+When('validate the forms behaviour', function () {
     homePage.getTwoWayDataBinding().should('have.value', name); // Checking the name is same or not in the two text boxes
     homePage.getEditBox().should('have.attr', 'minlength', '2'); // Checking whether the required minimum character length is 2 or not
     homePage.getEntrepreneaur().should('be.disabled'); // Checking the radio button is disabled or not
