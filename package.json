@@ -23,10 +23,12 @@
     "cypress": "^13.10.0",
     "cypress-iframe": "^1.0.1",
     "cypress-mochawesome-reporter": "^3.8.2",
-    "multiple-cucumber-html-reporter": "^3.6.2"
+    "multiple-cucumber-html-reporter": "^3.6.2",
+    "neat-csv": "^7.0.0"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
-    "@cypress/browserify-preprocessor": "latest"
+    "@cypress/browserify-preprocessor": "latest",
+    "csv-parser": "^3.0.0"
   }
 }
