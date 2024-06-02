@@ -20,3 +20,8 @@ import './commands'
 // require('./commands')
 
 import 'cypress-mochawesome-reporter/register';
+
+
+//to retrieve data from database
+import sqlServer from 'cypress-sql-server';
+sqlServer.loadDBCommands();
