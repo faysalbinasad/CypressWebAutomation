@@ -11,11 +11,14 @@ const {
 
 const sqlServer = require('cypress-sql-server');
 
+const excelToJson = require('convert-excel-to-json');
+const fs = require('fs');
+
 
 async function setupNodeEvents(on, config) {
 
 
-  config.db = { 
+  config.db = {
     userName: "faysaldbdemo",
     password: "Faysal@Azure",
     server: "faysaldbdemo.database.windows.net",
@@ -35,6 +38,21 @@ async function setupNodeEvents(on, config) {
   const tasks = sqlServer.loadDBPlugin(config.db);
   on('task', tasks);
 
+  on('task', {
+
+
+    excelToJsonConverter(filePath) {
+      const result = excelToJson({
+      source: fs.readFileSync(filePath) // fs.readFileSync return a Buffer
+      });
+
+      return result;
+
+    }
+
+
+  })
+
   // Make sure to return the config object as it might have been modified by the plugin.
   return config;
 }
@@ -53,17 +71,17 @@ module.exports = defineConfig({
 
   retries: {
     runMode: 1, //Retries for failed test cases
-    },
+  },
 
   projectId: "hwp8xr", //(Project Name: CypressWebAutomation)
 
   e2e: {
-      setupNodeEvents,
-     //specPattern: 'cypress\\integration\\examples\\*.js'
+    setupNodeEvents,
+    //specPattern: 'cypress\\integration\\examples\\*.js'
 
-       specPattern: 'cypress/integration/examples/**/*.js',
+    specPattern: 'cypress/integration/examples/**/*.js',
 
-       //specPattern: 'cypress/integration/examples/BDD/**/*.feature'
+    //specPattern: 'cypress/integration/examples/BDD/**/*.feature'
   },
 
 });

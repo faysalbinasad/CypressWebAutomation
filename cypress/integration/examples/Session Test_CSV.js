@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
-const neatCSV = require('neat-csv'); //importing the installed neat-csv package
+//const neatCSV = require('neat-csv'); //importing the installed neat-csv package
+import neatCsv from 'neat-csv';
 
 let productName
 
@@ -55,7 +56,7 @@ cy.visit("https://rahulshettyacademy.com/client/",
 
     // Cypress.config("fileServerFolder") //This command will get the project folder path
 
-    cy.readFile(Cypress.config("fileServerFolder")+"\cypress\downloads\order-invoice_afba.qa.csv").
+    cy.readFile(Cypress.config("fileServerFolder")+"/cypress/downloads/order-invoice_afba.qa.csv").
     then( async(text)=>
 {
 
