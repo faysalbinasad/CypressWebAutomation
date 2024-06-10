@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
-import HomePage from "./PageObjects/HomePage"
-import ProductPage from "./PageObjects/ProductPage"
+import HomePage from "./PageObjects/HomePage";
+import ProductPage from "./PageObjects/ProductPage";
 
 describe("Framework-1 test suite", function(){
 
