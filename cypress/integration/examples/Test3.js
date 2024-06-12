@@ -7,6 +7,8 @@ describe("My second test suite", function(){
     //Checkboxes
     
     cy.visit(Cypress.env('BaseUrl') + "/AutomationPractice/")
+
+   cy.title().should('eq', 'Practice Page')
   
     cy.get('#checkBoxOption1').check().should('be.checked').and('have.value', 'option1')
     cy.get('#checkBoxOption1').uncheck().should('not.be.checked')
