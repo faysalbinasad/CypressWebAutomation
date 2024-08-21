@@ -1,6 +1,6 @@
 
 
-const { defineConfig } = require("cypress");
+const { defineConfig } = require("Cypress");
 
 const {
   addCucumberPreprocessorPlugin,
